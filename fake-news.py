@@ -31,3 +31,5 @@ y_pred = pac.predict(tfidf_test)
 accuracy = accuracy_score(y_test, y_pred)
 print("Accuracy:", accuracy)
 
+# Save the model
+joblib.dump((model, vectorizer), 'fake_news_model.joblib')
