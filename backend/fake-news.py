@@ -6,6 +6,8 @@ from sklearn.linear_model import PassiveAggressiveClassifier
 from sklearn.metrics import accuracy_score
 import pickle
 
+#
+
 # Load the dataset
 real_news = pd.read_csv("../Dataset/True.csv")
 fake_news = pd.read_csv("../Dataset/Fake.csv")
