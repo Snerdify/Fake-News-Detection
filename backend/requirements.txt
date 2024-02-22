@@ -1,0 +1,4 @@
+Flask
+Flask-cors
+pandas==2.2
+

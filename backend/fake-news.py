@@ -7,17 +7,19 @@ from sklearn.metrics import accuracy_score
 import pickle
 
 # Load the dataset
-real_news = pd.read_csv('Dataset/True.csv')
-fake_news = pd.read_csv('Dataset/Fake.csv')
+real_news = pd.read_csv("../Dataset/True.csv")
+fake_news = pd.read_csv("../Dataset/Fake.csv")
 
 # combine both the datasets
 data = pd.concat([real_news, fake_news], ignore_index=True)
 
 # Split the dataset into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(data['text'], data['label'], test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(
+    data["text"], data["subject"], test_size=0.2, random_state=42
+)
 
 # Initialize the TfidfVectorizer
-tfidf_vectorizer = TfidfVectorizer(stop_words='english', max_df=0.7)
+tfidf_vectorizer = TfidfVectorizer(stop_words="english", max_df=0.7)
 
 # Fit and transform the training data
 tfidf_train = tfidf_vectorizer.fit_transform(X_train)
@@ -37,6 +39,6 @@ accuracy = accuracy_score(y_test, y_pred)
 print("Accuracy:", accuracy)
 
 # Save the model
-model_filename = 'fake-news-model.pkl'
-with open(model_filename, 'wb') as file:
+model_filename = "fake-news-model.pkl"
+with open(model_filename, "wb") as file:
     pickle.dump(pac, file)
